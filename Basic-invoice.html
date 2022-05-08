@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Invoice </title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- bootstrap css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- phone number -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/css/intlTelInput.css" rel="stylesheet" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/intlTelInput.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"></script>
+<!-- phone number -->
+
+<link rel="stylesheet" href="Basic-invoice.css">
+</head>
+<body>
+    <div class="container">
+        <div class="basic-invoic-forms">
+            <div class="invoice-header">
+                <div class="invoice-number">
+                    <label for="">Invoice #</label>
+                    <div class="invoice-input">
+                        <span style="font-weight:800;"># </span><input type="">
+                    </div>
+                </div>
+                <div class="from-input">
+                    <!-- <label for="from" to="from"><i class="fa-solid fa-user-large"></i> From</label> -->
+                    <div class="from-text-area">
+                        <textarea name="from" id="from" cols="80" rows="3" placeholder="Your Company Or Name, and Address"></textarea>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="invoice-logo-section">
+                <!-- <div class="logo">
+                    <Span class="upload-file">Select your Brand <br>Logo</Span>
+                    <input style="height:102px; width: 170px; margin: 0; padding: 0;" type="file" class="custom-file-input" >
+                </div> -->
+                <div class='file file--upload'>
+                    <label for='input-file' style="text-align:center;">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>Upload<br>Logo
+                    </label>
+                    <input id='input-file' type='file' />
+                  </div>
+                
+            </div>
+    
+        </div>
+        <hr class="horizental">
+
+        <div class="items-table">
+            <table>
+                <thead>
+                    <th>Describtion</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Disc. (%)</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </thead>
+               <tbody>
+                <tr>
+                    <td><input type="text" class="item_desc"></td>
+                    <td><input type="text" class="item_desc"></td>
+                    <td><input type="text" class="item_desc"></td>
+                    <td><input type="text" class="item_desc"></td>
+                    <td><input type="text" class="item_desc"></td>
+                    <td><i class="fa-solid fa-trash"></i></td>
+                </tr>
+               </tbody>
+            </table>
+            
+        
+        <hr class="horizental">
+        <!-- total price -->
+        <div class="total-caculations">
+            <div class="sub-Total">
+                <h5>SUB-TOTAL:</h5>
+                <h5>BDT <span>0.00</span></h5>
+            </div>
+            <hr>
+            <div class="vat">
+                <h5>V.A.T. (0%):</h5>
+                <h5>BDT <span>0.00</span></h5>
+            </div>
+            <hr>
+            <div class="total">
+                <div class="total_details">
+                    <h5>TOTAL:</h5>
+                <h5>BDT <span>0.00</span></h5>
+                </div>
+            </div>
+        </div>
+
+        <hr class="horizental">
+        <div class="add_client">
+            <div class="client-section">
+                <label style="margin-bottom: -30px; " class="add_client" for="SelExample">CLIENT <span style="border: 1px solid gray;font-size: 12px ;" href="#modalCenter" role="button" class="add-client" data-bs-toggle="modal"><i class="fa-solid fa-square-plus"></i> ADD CLIENT</span></label> <br>
+                <div class="mt-2">
+                    <!-- Button HTML (to Trigger Modal) -->
+                    
+                    
+                
+                    <!-- Modal HTML -->
+                    <div id="modalCenter" class="modal fade" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add New Contact</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="client-name">
+                                        <label for="">Name*</label><br>
+                                        <input style="width: 100%;" type="text" placeholder="Enter Full Name (Require)">
+                                    </div>
+                                    <div class="client-Email-phone mt-2">
+                                        <div class="client-e">
+                                        <label for="">Email*</label><br>
+                                        <input style="width: 100%;" type="email" placeholder="Enter Email (Require)">
+                                        </div>
+                                        <div class="client-ph">
+                                            <label for="">Phone Number</label><br>
+                                            <input id="phone" type="tel">
+                                            <span id="valid-msg" class="hide">Valid</span>
+                                            <span id="error-msg" class="hide">Invalid number</span>
+                                        </div>
+                                    </div>
+                                    <div class="client-addresss">
+                                        <label for="">Address</label>
+                                        <textarea name="" id="" cols="65" rows="8" placeholder="Billing Address (Optional)"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Add Contact</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <select id="SelExample" class="client_serarch_field" style="width: 200px; height: 23px;"  >
+                    <option value="0">Delhi</option>
+                    <option value="1">Hyderabad</option>
+                    <option value="2">Vizag</option>
+                    <option value="3">Kochi</option>
+                    <option value="4">Anantapur</option>
+                    <option value="5">Dharmavaram</option>
+                    <option value="6">Bengaluru</option>
+                    <option value="7">Lucknow</option>
+                    <option value="8">Madurai</option>
+                </select>
+            </div>
+
+              <div class="Tax_rate">
+                <label for="tax_rate">TAX RATE</label>
+                  <div class="Tax_rate_input">
+                    <input type="text" id="tax_rate" name="tax_rate" style="width: 200px;">
+                    <label for="tax_rate">%</label>
+                  </div>
+              </div>
+              <div class="Due_Date">
+                <label for="due_date">DUE DATE</label>
+                  <div class="current_date">
+                    <input id="current_date" name="current_date" class="date-flied" type="date" style="width: 200px;">
+                    
+                  </div>
+              </div>
+
+              <div class="currency-section">
+                <label for="currency">CURRENCY</label> <br>
+            <select id="currency" class="currency_serarch_field" style="width: 200px;" >
+                <option value="0">Delhi</option>
+                <option value="1">Hyderabad</option>
+                <option value="2">Vizag</option>
+                <option value="3">Kochi</option>
+                <option value="4">Anantapur</option>
+                <option value="5">Dharmavaram</option>
+                <option value="6">Bengaluru</option>
+                <option value="7">Lucknow</option>
+                <option value="8">Madurai</option>
+              </select>
+            </div>
+
+        </div>
+        
+        <div class="ckeditor_section">
+            <label for="footer_note">FOOTER NOTE</label>
+            <textarea name="editor1" id="footer_note" placeholder="Enter your footer invoice note e.g. bank details (offline payment),payment terms,thank you note,return policy etc.">Enter your footer invoice note e.g. bank details (offline payment),payment terms,thank you note,return policy etc.</textarea>
+        </div>
+
+
+    </div>
+    
+    <!-- date script -->
+    <script>
+        var date = new Date();
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+        var today = year + "-" + month + "-" + day;
+        document.getElementById('current_date').value = today; 
+    </script>
+  
+  <!-- dropdown and search field -->
+  
+  <script>
+      $(document).ready(function(){
+ 
+            // Initialize select2
+            $("#currency").select2();
+            $("#currency").select2("val", "4");
+            $('#currency option:selected').text('Vizag');
+            // Read selected option
+            $('#but_read').click(function(){
+            var username = $('#currency option:selected').text();
+            var userid = $('#currency').val();
+
+            $('#result').text("id : " + userid + ", name : " + username);
+            });
+        });
+  </script>
+ 
+  <script>
+    
+      $(document).ready(function(){
+ 
+            // Initialize select2
+            $("#SelExample").select2();
+            $("#SelExample").select2("val", "4");
+            $('#SelExample option:selected').text('Vizag');
+            // Read selected option
+            $('#but_read').click(function(){
+            var username = $('#SelExample option:selected').text();
+            var userid = $('#SelExample').val();
+
+            $('#result').text("id : " + userid + ", name : " + username);
+            });
+        });
+  </script>
+
+  <!-- ckeditor script -->
+  
+  <script src="./ckeditor/ckeditor.js"></script>
+
+  <!-- ckeditor -->
+  <script>
+    CKEDITOR.replace( 'editor1' );
+CKEDITOR.on( 'instanceReady', function( evt )
+  {
+    var editor = evt.editor;
+   
+   editor.on('change', function (e) { 
+    var contentSpace = editor.ui.space('contents');
+    var ckeditorFrameCollection = contentSpace.$.getElementsByTagName('iframe');
+    var ckeditorFrame = ckeditorFrameCollection[0];
+    var innerDoc = ckeditorFrame.contentDocument;
+    var innerDocTextAreaHeight = $(innerDoc.body).height();
+    console.log(innerDocTextAreaHeight);
+    });
+ });
+
+</script>
+
+
+<!-- popup button -->
+<script>
+    var exampleModal = document.getElementById('exampleModal')
+exampleModal.addEventListener('show.bs.modal', function (event) {
+  // Button that triggered the modal
+  var button = event.relatedTarget
+  // Extract info from data-bs-* attributes
+  var recipient = button.getAttribute('data-bs-whatever')
+  // If necessary, you could initiate an AJAX request here
+  // and then do the updating in a callback.
+  //
+  // Update the modal's content.
+  var modalTitle = exampleModal.querySelector('.modal-title')
+  var modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+  modalTitle.textContent = 'New message to ' + recipient
+  modalBodyInput.value = recipient
+})
+</script>
+
+
+
+<!-- phone number-->
+<script >
+
+var telInput = $("#phone"),
+errorMsg = $("#error-msg"),
+validMsg = $("#valid-msg");
+
+// initialise plugin
+telInput.intlTelInput({
+
+allowExtensions: true,
+formatOnDisplay: true,
+autoFormat: true,
+autoHideDialCode: true,
+autoPlaceholder: true,
+defaultCountry: "auto",
+ipinfoToken: "yolo",
+
+nationalMode: false,
+numberType: "MOBILE",
+//onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+preferredCountries: ['sa', 'ae', 'qa','om','bh','kw','ma'],
+preventInvalidNumbers: true,
+separateDialCode: true,
+initialCountry: "auto",
+geoIpLookup: function(callback) {
+$.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+  var countryCode = (resp && resp.country) ? resp.country : "";
+  callback(countryCode);
+});
+},
+ utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
+});
+
+var reset = function() {
+telInput.removeClass("error");
+errorMsg.addClass("hide");
+validMsg.addClass("hide");
+};
+
+// on blur: validate
+telInput.blur(function() {
+reset();
+if ($.trim(telInput.val())) {
+  if (telInput.intlTelInput("isValidNumber")) {
+    validMsg.removeClass("hide");
+  } else {
+    telInput.addClass("error");
+    errorMsg.removeClass("hide");
+  }
+}
+});
+
+// on keyup / change flag: reset
+telInput.on("keyup change", reset);
+
+
+
+</script>
+</body>
+
+</html>
